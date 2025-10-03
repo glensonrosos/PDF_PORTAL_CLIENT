@@ -14,7 +14,9 @@ function Nav() {
   const { user, logout } = useAuth();
   return (
     <nav className="nav">
-      <Link to={user ? "/dashboard" : "/login"} className="brand" title={user ? "Go to Dashboard" : "Go to Login"}>PEBA PDF Portal</Link>
+      <Link to={user ? "/dashboard" : "/login"} className="brand" title={user ? "Go to Dashboard" : "Go to Login"}>
+        <img src="/logo.png" alt="PEBA Tandem Manufacturing, Inc. - PDF Portal" style={{ height: 36, display: 'block' }} />
+      </Link>
       <div className="links">
         {user ? (
           <>
@@ -55,6 +57,9 @@ export default function App() {
           <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       </div>
+      <footer style={{ textAlign: 'center', padding: '16px 12px', color: '#6b7280' }}>
+        © {new Date().getFullYear()} Glenson_Encode. All rights reserved.
+      </footer>
     </AuthProvider>
   );
 }
