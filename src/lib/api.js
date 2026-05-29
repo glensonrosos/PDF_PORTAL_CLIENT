@@ -10,10 +10,12 @@ const inferredBase = (() => {
   return `${protocol}//${hostname}:${apiPort}`;
 })();
 
+// In development, use relative '/api' to activate CRA proxy (set in package.json)
+// In production, use explicit base URL or inferred LAN host
+const isDev = process.env.NODE_ENV === 'development';
 const base = (process.env.REACT_APP_API_BASE_URL || inferredBase || '').replace(/\/$/, '');
-
 const api = axios.create({
-  baseURL: base + '/api',
+  baseURL: isDev ? '/api' : base + '/api',
 });
 
 // Attach Authorization header from localStorage token
