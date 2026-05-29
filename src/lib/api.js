@@ -6,7 +6,7 @@ import axios from 'axios';
 const inferredBase = (() => {
   if (typeof window === 'undefined') return '';
   const { protocol, hostname } = window.location;
-  const apiPort = 5000; // server default
+  const apiPort = 5007; // server default
   return `${protocol}//${hostname}:${apiPort}`;
 })();
 
